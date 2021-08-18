@@ -56,7 +56,7 @@ jobs:
        name: code
        path: .
     - name: build-step 
-      run:  chmod +x ci/build-docker.sh && ci/build-docker.sh
+      run: cd ./github-actions-katas && chmod +x ci/build-docker.sh && ci/build-docker.sh
     - name: push-step 
-      run:  chmod +x ci/push-docker.sh && ci/push-docker.sh
+      run:  cd ./github-actions-katas && chmod +x ci/push-docker.sh && ci/push-docker.sh
 
