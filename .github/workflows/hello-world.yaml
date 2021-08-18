@@ -7,6 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: my-step
-        run: bash ci/build-app.sh
+        run: ci/build-app.sh
       - name: test-step 
-        run: bash ci/unit-test-app.sh
+        run: ci/unit-test-app.sh
