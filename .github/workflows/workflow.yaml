@@ -44,7 +44,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: code
-        path: ./github-actions-katas
+        path: .
   Docker-Image:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
