@@ -11,7 +11,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: code
-        path: .
+        path: ./github-actions-katas
   Test:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
