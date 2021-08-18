@@ -47,7 +47,6 @@ jobs:
         path: .
   Docker-Image:
     runs-on: ubuntu-latest
-    container: gradle:6-jdk11
     needs: [Build,Test]
     steps:
     - name: Download code
