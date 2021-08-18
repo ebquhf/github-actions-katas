@@ -55,8 +55,14 @@ jobs:
       with:
        name: code
        path: .
-    - name: build-step 
-      run: cd ./github-actions-katas && chmod +x ci/build-docker.sh && ci/build-docker.sh
-    - name: push-step 
-      run:  cd ./github-actions-katas && chmod +x ci/push-docker.sh && ci/push-docker.sh
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ env.docker_username }}
+        password: ${{ env.docker_password }}
+    - name: Build and push
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: ebquhf/sdu_summer_school:latest
 
