@@ -41,7 +41,7 @@ jobs:
        path: .
     - uses: actions/checkout@v2
     - name: build-step 
-      run: ci/build-app.sh
+      run:  chmod +x ci/build-app.sh && ci/build-app.sh
     - name: Upload Repo
       uses: actions/upload-artifact@v2
       with:
