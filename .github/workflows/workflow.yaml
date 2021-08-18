@@ -1,4 +1,7 @@
 name: Java CI
+env:
+  docker_username: ebquhf
+  docker_password: ${{ secrets.DOCKER_PASSWORD }}
 on: push
 jobs:
   Clone-down:
@@ -24,11 +27,6 @@ jobs:
        path: .
     - name: test-step 
       run: chmod +x ci/unit-test-app.sh && ci/unit-test-app.sh
-    - name: Upload Repo
-      uses: actions/upload-artifact@v2
-      with:
-        name: code
-        path: .
   Build:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
@@ -46,4 +44,19 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: code
-        path: .
+        path: ./github-actions-katas
+  Docker-Image:
+    runs-on: ubuntu-latest
+    container: gradle:6-jdk11
+    needs: Build
+    steps:
+    - name: Download code
+      uses: actions/download-artifact@v2
+      with:
+       name: code
+       path: .
+    - name: build-step 
+      run:  chmod +x ci/build-docker.sh && ci/build-docker.sh
+    - name: push-step 
+      run:  chmod +x ci/push-docker.sh && ci/push-docker.sh
+
