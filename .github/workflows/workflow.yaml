@@ -4,7 +4,6 @@ jobs:
   Clone-down:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
-    needs: Clone-down
     steps:
     - name: test-step 
       run: git clone https://github.com/ebquhf/github-actions-katas.git
