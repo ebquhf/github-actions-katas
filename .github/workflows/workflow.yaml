@@ -1,6 +1,6 @@
 name: Java CI
 env:
-  docker_username: ebquhf
+  docker_username: ${{ secrets.DOCKER_USERNAME }}
   docker_password: ${{ secrets.DOCKER_PASSWORD }}
 on: push
 jobs:
@@ -48,7 +48,7 @@ jobs:
   Docker-Image:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
-    needs: Build
+    needs: [Build,Test]
     steps:
     - name: Download code
       uses: actions/download-artifact@v2
