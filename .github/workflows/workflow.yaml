@@ -17,11 +17,11 @@ jobs:
     container: gradle:6-jdk11
     needs: Clone-down
     steps:
-    -name: Download code
-     uses: actions/download-artifact@v2
-     with:
-      name: code
-      path: .
+    - name: Download code
+      uses: actions/download-artifact@v2
+      with:
+       name: code
+       path: .
     - name: test-step 
       run: ci/unit-test-app.sh
     - name: Upload Repo
@@ -34,11 +34,11 @@ jobs:
     container: gradle:6-jdk11
     needs: Clone-down
     steps:
-    -name: Download code
-     uses: actions/download-artifact@v2
-     with:
-      name: code
-      path: .
+    - name: Download code
+      uses: actions/download-artifact@v2
+      with:
+       name: code
+       path: .
     - uses: actions/checkout@v2
     - name: build-step 
       run: ci/build-app.sh
