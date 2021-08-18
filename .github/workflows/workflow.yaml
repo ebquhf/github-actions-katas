@@ -5,8 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
-    - name: test-step 
+    - name: clone repo 
       run: git clone https://github.com/ebquhf/github-actions-katas.git
+    - name: Upload Repo
+      uses: actions/upload-artifact@v2
+      with:
+        name: code
+        path: .
   Test:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
@@ -14,6 +19,11 @@ jobs:
     steps:
     - name: test-step 
       run: ci/unit-test-app.sh
+    - name: Upload Repo
+      uses: actions/upload-artifact@v2
+      with:
+        name: code
+        path: .
   Build:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
